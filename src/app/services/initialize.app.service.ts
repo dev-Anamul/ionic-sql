@@ -26,9 +26,6 @@ export class InitializeAppService {
         const DB_USERS = 'myuserdb';
         await this.storageService.initializeDatabase(DB_USERS);
 
-        // my changes
-        // const DB_PRODUCTS = 'productdb';
-        // await this.productStorageService.initializeDatabase(DB_PRODUCTS);
         // Here Initialize MOCK_DATA if required
 
         // Initialize whatever database and/or MOCK_DATA you like

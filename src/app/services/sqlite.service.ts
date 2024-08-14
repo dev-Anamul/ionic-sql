@@ -78,13 +78,8 @@ export class SQLiteService {
     return await this.sqliteConnection.closeConnection(database, readOnly);
   }
   async addUpgradeStatement(options: capSQLiteUpgradeOptions): Promise<void> {
-    console.log('options', options);
-    try {
-      await this.sqlitePlugin.addUpgradeStatement(options);
-      return;
-    } catch (error) {
-      console.log('updage error', error);
-    }
+    await this.sqlitePlugin.addUpgradeStatement(options);
+    return;
   }
   async saveToStore(database: string): Promise<void> {
     return await this.sqliteConnection.saveToStore(database);

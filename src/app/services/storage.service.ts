@@ -24,7 +24,6 @@ export class StorageService {
     this.loadToVersion =
       this.versionUpgrades[this.versionUpgrades.length - 1].toVersion;
   }
-
   async initializeDatabase(dbName: string) {
     this.databaseName = dbName;
     // create upgrade statements
@@ -43,15 +42,12 @@ export class StorageService {
     this.dbVerService.set(this.databaseName, this.loadToVersion);
     await this.getUsers();
   }
-
   userState() {
     return this.isUserReady.asObservable();
   }
-
   fetchUsers(): Observable<User[]> {
     return this.userList.asObservable();
   }
-
   async loadUsers() {
     const users: User[] = (await this.db.query('SELECT * FROM users;'))
       .values as User[];
@@ -66,7 +62,6 @@ export class StorageService {
     await this.db.run(sql, [name]);
     await this.getUsers();
   }
-
   async updateUserById(id: string, active: number) {
     const sql = `UPDATE users SET active=${active} WHERE id=${id}`;
     await this.db.run(sql);
